@@ -14,7 +14,7 @@
 body{
 margin:0;
 background:#ffffff;
-font-family:Montserrat, sans-serif;
+font-family:Montserrat,sans-serif;
 text-align:center;
 color:#111;
 }
@@ -22,46 +22,56 @@ color:#111;
 .container{
 max-width:420px;
 margin:auto;
-padding:20px;
+padding:22px;
 }
 
+/* LOGO */
 .logo{
-width:65%;
-max-width:230px;
-margin:10px auto 20px;
+width:60%;
+max-width:220px;
+margin:auto;
 display:block;
 }
 
-/* titulo tipo FOCA */
+/* TITULO */
 .titulo{
 font-family:Anton;
 font-size:34px;
 letter-spacing:2px;
-margin-bottom:20px;
-transform:rotate(-2deg);
+margin:20px 0;
 }
 
-/* alias clickeable */
+/* ALIAS */
 .alias{
 border:3px solid #111;
 border-radius:14px;
-padding:20px;
+padding:22px;
 font-size:22px;
 font-weight:800;
 cursor:pointer;
 background:white;
-transition:.2s;
+transition:.25s;
+user-select:none;
 }
 
-.alias:active{
-transform:scale(.97);
+.alias small{
+font-weight:600;
+opacity:.6;
 }
 
+.alias.copiado{
+background:#111;
+color:white;
+transform:scale(.96);
+}
+
+/* CBU */
 .cbu{
 margin:15px 0;
 font-size:16px;
 }
 
+/* TARJETA */
 .card{
 background:#f4efe8;
 padding:18px;
@@ -70,7 +80,7 @@ margin:20px 0;
 font-weight:600;
 }
 
-/* boton wsp */
+/* BOTON WSP */
 .wsp{
 display:block;
 text-decoration:none;
@@ -82,14 +92,24 @@ font-weight:700;
 font-size:20px;
 color:#111;
 margin-top:25px;
+transition:.25s;
 }
 
+.wsp.activo{
+background:#25D366;
+border-color:#25D366;
+color:white;
+transform:scale(.96);
+}
+
+/* GRACIAS */
 .gracias{
 font-family:Parisienne;
 font-size:30px;
-margin-top:25px;
+margin-top:22px;
 }
 
+/* FOOTER */
 .footer{
 margin-top:10px;
 font-size:14px;
@@ -110,7 +130,7 @@ COPIÁ EL ALIAS<br>Y TRANSFERÍ
 </div>
 
 <div id="alias" class="alias">
-Wally.So.Pago<br>
+📋 Wally.So.Pago<br>
 <small>Tocá para copiar</small>
 </div>
 
@@ -123,9 +143,8 @@ Mercado Pago<br>
 Walter Alberto Sotelo
 </div>
 
-<a class="wsp"
-href="https://wa.me/5493858400061?text=Hola%20👋%20quiero%20pedir%20una%20focaccia"
-target="_blank">
+<a id="wsp" class="wsp"
+href="https://wa.me/5493858400061?text=Hola%20👋%20quiero%20pedir%20una%20focaccia">
 👋 Pedí por WhatsApp
 </a>
 
@@ -139,25 +158,43 @@ FOCA — Focaccia artesanal
 
 <script>
 
-/* copiar alias */
-document.getElementById("alias").onclick=()=>{
+/* COPIAR ALIAS PRO */
+const alias=document.getElementById("alias");
+
+alias.onclick=()=>{
+
 navigator.clipboard.writeText("Wally.So.Pago");
 
-const aviso=document.createElement("div");
-aviso.innerText="Alias copiado ✔️";
-aviso.style.position="fixed";
-aviso.style.bottom="25px";
-aviso.style.left="50%";
-aviso.style.transform="translateX(-50%)";
-aviso.style.background="#111";
-aviso.style.color="white";
-aviso.style.padding="12px 18px";
-aviso.style.borderRadius="10px";
-aviso.style.fontFamily="Montserrat";
-document.body.appendChild(aviso);
+/* vibración si el celular lo permite */
+if(navigator.vibrate){
+navigator.vibrate(40);
+}
 
-setTimeout(()=>aviso.remove(),1800);
+alias.classList.add("copiado");
+alias.innerHTML="✔ ALIAS COPIADO";
+
+setTimeout(()=>{
+alias.classList.remove("copiado");
+alias.innerHTML="📋 Wally.So.Pago<br><small>Tocá para copiar</small>";
+},1800);
+
 };
+
+
+/* BOTON WHATSAPP CON FEEDBACK */
+const wsp=document.getElementById("wsp");
+
+wsp.addEventListener("click",(e)=>{
+
+e.preventDefault();
+
+wsp.classList.add("activo");
+
+setTimeout(()=>{
+window.location.href=wsp.href;
+},350);
+
+});
 
 </script>
 

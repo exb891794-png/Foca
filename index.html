@@ -1,63 +1,90 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FOCA – Focaccia artesanal</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FOCA – Focaccia artesanal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
 
 body{
 margin:0;
 background:#ffffff;
 font-family:Montserrat, sans-serif;
-text-align:center;
 color:#111;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
 }
 
 .container{
-max-width:420px;
-margin:auto;
+max-width:380px;
+width:100%;
 padding:20px;
+text-align:center;
 }
+
+/* LOGO */
 
 .logo{
-width:100%;
-max-width:360px;
-margin:auto;
+width:85%;
+max-width:260px;
+margin-bottom:10px;
 }
 
-h1{
-font-size:34px;
-margin:25px 0 10px;
+/* TITULO EN ARCO */
+
+.arc-text{
 font-weight:800;
+font-size:28px;
 letter-spacing:1px;
+margin:15px 0 10px;
+transform:perspective(500px) rotateX(18deg);
 }
+
+/* ALIAS */
 
 .alias-box{
 border:3px solid #111;
 border-radius:14px;
-padding:18px;
-font-size:20px;
+padding:14px;
+font-size:19px;
 font-weight:600;
-margin:20px 0;
+margin:15px 0;
 background:white;
 }
 
+/* CBU */
+
 .cbu{
-margin:15px 0;
-font-size:18px;
+font-size:16px;
+margin-bottom:15px;
 }
+
+/* TARJETA MP */
 
 .card{
 background:#f4efe8;
-padding:18px;
+padding:14px;
 border-radius:14px;
-margin:20px 0;
 font-weight:600;
+margin-bottom:15px;
 }
+
+/* GRACIAS */
 
 .gracias{
 font-family:"Playfair Display";
-font-size:28px;
-margin:20px 0;
+font-size:24px;
+margin:10px 0 15px;
 }
+
+/* BOTON WSP */
 
 .wsp{
 display:block;
@@ -65,46 +92,65 @@ text-decoration:none;
 background:white;
 border:3px solid #111;
 border-radius:14px;
-padding:18px;
-font-weight:700;
-font-size:20px;
+padding:16px;
+font-weight:800;
+font-size:19px;
 color:#111;
-margin:30px 0;
+transition:.2s;
 }
 
-.icons{
-margin-top:30px;
-font-size:13px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
+.wsp:hover{
+background:#111;
+color:white;
 }
+
+/* FOOTER */
 
 .footer{
-margin-top:30px;
-font-size:14px;
-opacity:0.8;
+margin-top:12px;
+font-size:13px;
+opacity:.7;
 }
 
-</style></head><body><div class="container"><img src="logo-foca.png" class="logo"><h1>COPIÁ EL ALIAS<br>Y TRANSFERÍ</h1><div class="alias-box">
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo-foca.png" class="logo">
+
+<div class="arc-text">
+COPIÁ EL ALIAS<br>Y TRANSFERÍ
+</div>
+
+<div class="alias-box">
 Alias: Wally.So.Pago
-</div><div class="cbu">
+</div>
+
+<div class="cbu">
 CBU: 0000003100019237015422
-</div><div class="card">
+</div>
+
+<div class="card">
 Mercado Pago<br>
 Walter Alberto Sotelo
-</div><div class="gracias">Gracias</div><a class="wsp"
+</div>
+
+<div class="gracias">Gracias</div>
+
+<a class="wsp"
 href="https://wa.me/5493858400061?text=Hola%20quiero%20pedir%20una%20focaccia"
 target="_blank">
 PEDÍ POR WHATSAPP
 </a>
 
-<div class="icons">
-<div>Ingredientes de calidad</div>
-<div>Cocción lenta</div>
-<div>Recetas artesanales</div>
-<div>Hecho con pasión</div>
-</div><div class="footer">
+<div class="footer">
 FOCA — Focaccia artesanal
-</div></div></body>
+</div>
+
+</div>
+
+</body>
 </html>

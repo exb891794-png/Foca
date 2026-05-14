@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>FOCA — Focaccia artesanal</title>
+<title>FOCA — Pago</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&family=Parisienne&display=swap" rel="stylesheet">
 
@@ -15,7 +14,7 @@
 body{
 margin:0;
 background:#ffffff;
-font-family:Montserrat,sans-serif;
+font-family:Montserrat, sans-serif;
 text-align:center;
 color:#111;
 }
@@ -26,70 +25,42 @@ margin:auto;
 padding:20px;
 }
 
-/* LOGO */
-
 .logo{
-width:80%;
-max-width:260px;
+width:65%;
+max-width:230px;
 margin:10px auto 20px;
 display:block;
 }
 
-/* TITULO ARCO */
-
+/* titulo tipo FOCA */
 .titulo{
 font-family:Anton;
 font-size:34px;
 letter-spacing:2px;
-line-height:1.1;
-margin:10px 0 20px;
+margin-bottom:20px;
+transform:rotate(-2deg);
 }
 
-/* LINEA DECORATIVA */
-
-.divider{
-margin:20px auto;
-width:80%;
-border-top:2px solid #111;
-opacity:.15;
-}
-
-/* ALIAS BOX */
-
-.alias-box{
+/* alias clickeable */
+.alias{
 border:3px solid #111;
 border-radius:14px;
-padding:18px;
-font-size:20px;
-font-weight:700;
+padding:20px;
+font-size:22px;
+font-weight:800;
 cursor:pointer;
-transition:.25s;
-background:#fff;
+background:white;
+transition:.2s;
 }
 
-.alias-box small{
-font-weight:400;
-font-size:14px;
-opacity:.7;
-}
-
-.alias-box:active{
+.alias:active{
 transform:scale(.97);
 }
 
-.copiado{
-background:#111;
-color:#fff;
-}
-
-/* CBU */
-
 .cbu{
 margin:15px 0;
-font-size:17px;
+font-size:16px;
 }
-
-/* CARD MP */
 
 .card{
 background:#f4efe8;
@@ -99,36 +70,25 @@ margin:20px 0;
 font-weight:600;
 }
 
-/* GRACIAS */
+/* boton wsp */
+.wsp{
+display:block;
+text-decoration:none;
+background:white;
+border:3px solid #111;
+border-radius:14px;
+padding:18px;
+font-weight:700;
+font-size:20px;
+color:#111;
+margin-top:25px;
+}
 
 .gracias{
 font-family:Parisienne;
 font-size:30px;
-margin:20px 0;
+margin-top:25px;
 }
-
-/* BOTON WHATSAPP */
-
-.wsp{
-display:block;
-text-decoration:none;
-background:#fff;
-border:3px solid #111;
-border-radius:14px;
-padding:18px;
-font-weight:800;
-font-size:20px;
-color:#111;
-margin:25px 0;
-transition:.25s;
-}
-
-.wsp:hover{
-background:#111;
-color:#fff;
-}
-
-/* FOOTER */
 
 .footer{
 margin-top:10px;
@@ -137,7 +97,6 @@ opacity:.7;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -147,15 +106,12 @@ opacity:.7;
 <img src="logo-foca.png" class="logo">
 
 <div class="titulo">
-COPIÁ EL ALIAS<br>
-Y TRANSFERÍ
+COPIÁ EL ALIAS<br>Y TRANSFERÍ
 </div>
 
-<div class="divider"></div>
-
-<div id="alias" class="alias-box">
-Alias: Wally.So.Pago<br>
-<small>Tocá para copiar y pagar</small>
+<div id="alias" class="alias">
+Wally.So.Pago<br>
+<small>Tocá para copiar</small>
 </div>
 
 <div class="cbu">
@@ -167,13 +123,13 @@ Mercado Pago<br>
 Walter Alberto Sotelo
 </div>
 
-<div class="gracias">Gracias</div>
-
 <a class="wsp"
-href="https://wa.me/5493858400061?text=Hola%20quiero%20pedir%20una%20focaccia"
+href="https://wa.me/5493858400061?text=Hola%20👋%20quiero%20pedir%20una%20focaccia"
 target="_blank">
-PEDÍ POR WHATSAPP
+👋 Pedí por WhatsApp
 </a>
+
+<div class="gracias">Gracias</div>
 
 <div class="footer">
 FOCA — Focaccia artesanal
@@ -183,36 +139,25 @@ FOCA — Focaccia artesanal
 
 <script>
 
-/* COPIAR + ABRIR MERCADO PAGO */
+/* copiar alias */
+document.getElementById("alias").onclick=()=>{
+navigator.clipboard.writeText("Wally.So.Pago");
 
-const aliasBox=document.getElementById("alias");
+const aviso=document.createElement("div");
+aviso.innerText="Alias copiado ✔️";
+aviso.style.position="fixed";
+aviso.style.bottom="25px";
+aviso.style.left="50%";
+aviso.style.transform="translateX(-50%)";
+aviso.style.background="#111";
+aviso.style.color="white";
+aviso.style.padding="12px 18px";
+aviso.style.borderRadius="10px";
+aviso.style.fontFamily="Montserrat";
+document.body.appendChild(aviso);
 
-aliasBox.addEventListener("click",()=>{
-
-const alias="Wally.So.Pago";
-
-/* copiar */
-navigator.clipboard.writeText(alias);
-
-/* feedback */
-aliasBox.innerHTML="✅ Alias copiado<br><small>Abriendo Mercado Pago...</small>";
-aliasBox.classList.add("copiado");
-
-/* abrir app */
-window.location.href="mercadopago://";
-
-/* fallback web */
-setTimeout(()=>{
-window.open("https://www.mercadopago.com.ar/","_blank");
-},1200);
-
-/* restaurar */
-setTimeout(()=>{
-aliasBox.innerHTML="Alias: Wally.So.Pago<br><small>Tocá para copiar y pagar</small>";
-aliasBox.classList.remove("copiado");
-},3000);
-
-});
+setTimeout(()=>aviso.remove(),1800);
+};
 
 </script>
 
